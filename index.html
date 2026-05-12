@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor & Project Management Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Vendor & Project Management Portal</h1>
+        <p class="tag">Separate login for Vendors and Project Management</p>
+      </div>
+      <div class="actions">
+        <button id="homeBackButton" class="link" type="button">Home</button>
+        <button id="logoutButton" class="secondary" type="button">Logout</button>
+      </div>
+    </header>
+
+    <section id="homePage" class="page active">
+      <div class="card">
+        <h2>Choose your access</h2>
+        <p>Use the two login paths below to view tasks and workflows for vendors or project management.</p>
+        <div class="grid-2" style="margin-top:24px;">
+          <article class="role-card card">
+            <h2>Vendor Login</h2>
+            <p>Login as a vendor to manage enquiries, meetings, onboarding, and notes.</p>
+            <button id="vendorButton" type="button">Vendor Login</button>
+          </article>
+          <article class="role-card card">
+            <h2>Project Management Login</h2>
+            <p>Login as a project manager to oversee project onboarding, requirements, and kickoff.</p>
+            <button id="managementButton" type="button">Project Management Login</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="vendorLoginPage" class="page">
+      <div class="card">
+        <h2>Vendor Login</h2>
+        <p>Demo credentials: vendor@example.com / vendor123</p>
+        <form id="vendorLoginForm">
+          <label>Email
+            <input name="email" type="email" placeholder="Email" required />
+          </label>
+          <label>Password
+            <input name="password" type="password" placeholder="Password" required />
+          </label>
+          <div class="button-group">
+            <button type="submit">Login as Vendor</button>
+            <button id="vendorBackButton" class="secondary" type="button">Back</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="managementLoginPage" class="page">
+      <div class="card">
+        <h2>Project Management Login</h2>
+        <p>Demo credentials: pm@example.com / manager123</p>
+        <form id="managementLoginForm">
+          <label>Email
+            <input name="email" type="email" placeholder="Email" required />
+          </label>
+          <label>Password
+            <input name="password" type="password" placeholder="Password" required />
+          </label>
+          <div class="button-group">
+            <button type="submit">Login as Project Manager</button>
+            <button id="managementBackButton" class="secondary" type="button">Back</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboardPage" class="page">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+          <div>
+            <span class="info-label">Current workspace</span>
+            <h2 id="dashboardTitle">Tasks</h2>
+            <p id="welcomeText"></p>
+          </div>
+          <div>
+            <span class="info-label">Role</span>
+            <p id="currentRoleLabel">Portal</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px;">
+        <h3>Update meeting notes & communication channel</h3>
+        <form id="meetingNoteForm">
+          <input id="selectedTaskId" type="hidden" value="1" />
+          <label>Task
+            <div id="selectedTaskTitle" style="font-weight:700; margin-top:8px; color: var(--muted);">Vendor meeting and notes</div>
+          </label>
+          <label>Communication channel
+            <select id="taskChannelSelect">
+              <option>Google Meet</option>
+              <option>Microsoft Teams</option>
+              <option>Zoom</option>
+              <option>Phone Call</option>
+            </select>
+          </label>
+          <label>Meeting notes
+            <textarea id="taskNotesInput" placeholder="Enter notes for the selected task"></textarea>
+          </label>
+          <div class="button-group">
+            <button id="saveNoteButton" type="submit">Save task update</button>
+            <button type="button" class="secondary" onclick="renderTaskList()">Refresh tasks</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="task-list" id="taskList"></div>
+    </section>
+
+    <footer>
+      <p>Built for vendor enquiry, meeting notes, onboarding, requirement gathering, and project kickoff workflows.</p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
